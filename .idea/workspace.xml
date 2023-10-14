@@ -21,6 +21,7 @@
     <list default="true" id="849570fc-1598-4b6e-adfc-8dd301c9a011" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +92,11 @@
       <workItem from="1695068949339" duration="2161000" />
       <workItem from="1696126430612" duration="87000" />
       <workItem from="1696126703733" duration="879000" />
-      <workItem from="1696217013231" duration="3635000" />
+      <workItem from="1696217013231" duration="3713000" />
+      <workItem from="1696276563313" duration="2765000" />
+      <workItem from="1696907467389" duration="3652000" />
+      <workItem from="1697131880484" duration="1218000" />
+      <workItem from="1697305549899" duration="1769000" />
     </task>
     <servers />
   </component>
@@ -103,5 +108,16 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>145</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

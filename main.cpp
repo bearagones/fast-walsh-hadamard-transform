@@ -36,20 +36,29 @@ void printMatrix(const string& type, vector<int> matrix) {
 // function to create matrix x via a .txt file
 vector<int> makeMatrix() {
 
-    ifstream matrixFile;
+    srand(time(0));
+
+    ofstream matrixFile;
+
+    cout << "Enter the number of rows: ";
+    cin >> numRows;
+    cout << "Enter the number of columns: ";
+    cin >> numColumns;
+
+    vector<int> matrix(numRows * numColumns);
 
     matrixFile.open("./matrix.txt");
 
     if (matrixFile.is_open()) {
-        matrixFile >> numRows >> numColumns;
-    }
 
-    vector<int> matrix(numRows * numColumns);
-
-    // user-input for matrix
-    for (int i = 0; i < numRows; i++) {
-        for (int j = 0; j < numColumns; j++) {
-            matrixFile >> matrix[((j * numRows) + i)];
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numColumns; j++) {
+                int element = rand() % 10;
+                matrixFile << element << " ";
+                matrix[((j * numRows) + i)] = element;
+                //matrixFile << matrix[((j * numRows) + i)];
+            }
+            matrixFile << endl;
         }
     }
 
@@ -198,26 +207,25 @@ vector<int> FWHT(const string& type, vector<int> matrix, bool bitRev, bool bitRe
 }
 
 // function to measure the allotted time it takes for FWHT to perform
-void timeFWHT(bool bitRev, bool bitRevTwice) {
+void timeFWHT(const vector<int>& matrix, bool bitRev, bool bitRevTwice) {
 
     auto start = high_resolution_clock::now();
-    vector<int> x = makeMatrix();
 
     if (numRows >= numColumns) {
         if (bitRev && !bitRevTwice) {
-            FWHT("column", bitReversal(x), bitRev, bitRevTwice);
+            FWHT("column", bitReversal(matrix), bitRev, bitRevTwice);
         } else if (bitRevTwice) {
-            FWHT("column", bitReversal(x), bitRev, bitRevTwice);
+            FWHT("column", bitReversal(matrix), bitRev, bitRevTwice);
         } else {
-            FWHT("column", x, bitRev, bitRevTwice);
+            FWHT("column", matrix, bitRev, bitRevTwice);
         }
     } else {
         if (bitRev && !bitRevTwice) {
-            FWHT("row", bitReversal(transpose(x)), bitRev, bitRevTwice);
+            FWHT("row", bitReversal(transpose(matrix)), bitRev, bitRevTwice);
         } else if (bitRevTwice) {
-            FWHT("row", bitReversal(transpose(x)), bitRev, bitRevTwice);
+            FWHT("row", bitReversal(transpose(matrix)), bitRev, bitRevTwice);
         } else {
-            FWHT("row", transpose(x), bitRev, bitRevTwice);
+            FWHT("row", transpose(matrix), bitRev, bitRevTwice);
         }
     }
 
@@ -236,9 +244,11 @@ void timeFWHT(bool bitRev, bool bitRevTwice) {
 // main method
 int main() {
 
-    timeFWHT(false, false);
-    timeFWHT(true, false);
-    timeFWHT(true, true);
+    vector<int> x = makeMatrix();
+
+    timeFWHT(x, false, false);
+    timeFWHT(x, true, false);
+    timeFWHT(x, true, true);
 
     return 0;
 }
